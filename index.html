@@ -12,9 +12,6 @@
 			text-align: center;
 			background-color: black;
 			font-family: arial,sans-serif;
-			display: flex;
-			justify-content:center;
-			align-items:center;
 		}
 
 
@@ -84,8 +81,6 @@
 			 * calculate cursor coordinates correctly */
 			border: 0 none;
 			padding: 0;
-			max-width: 100vw;
-    		max-height: 100vh;
 		}
 
 
@@ -177,7 +172,7 @@
 	</style>
 </head>
 <body>
-<script>
+	<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -188,7 +183,7 @@
 
 </script>
 	<div id="container">
-		<canvas id="canvas" width="800" height="800" onclick="canvas.ownerDocument.defaultView.focus();" oncontextmenu="event.preventDefault();">
+		<canvas id="canvas" width="1280" height="800" onclick="canvas.ownerDocument.defaultView.focus();" oncontextmenu="event.preventDefault();">
 			HTML5 canvas appears to be unsupported in the current browser.<br />Please try updating or use a different browser.
 		</canvas>
 		<div id="status-container">
@@ -196,9 +191,14 @@
 		</div>
 		<div id="controls" class="godot">
 			<label id="display-output"><input id="output-toggle" type="checkbox" autocomplete="off" onchange="Presentation.setOutputVisible(this.checked);" />display output</label>
+			<!-- hidden until implemented
+			<label><input id="lock-cursor" type="checkbox" autocomplete="off" />lock cursor</label>
+			<label><input id="resize-canvas" type="checkbox" autocomplete="off" />resize canvas</label>
+			-->
 			<button id="fullscreen" class="godot" type="button" disabled="disabled" autocomplete="off" onclick="Presentation.goFullscreen();">fullscreen</button>
 		</div>
 	</div>
+	<!-- Firefox adds extra space to textarea, but shouldn't matter too much https://bugzilla.mozilla.org/show_bug.cgi?id=33654 -->
 	<textarea id="output" rows="10" cols="100" readonly="readonly" style="resize:none"></textarea>
 
 	<script type="text/javascript">//<![CDATA[
@@ -243,7 +243,7 @@
 				})();
 			}
 
-			if (false) { // debugging enabled
+			if (true) { // debugging enabled
 				(function() {
 					var outputToggleLabel = document.getElementById("display-output");
 					var outputToggle = document.getElementById("output-toggle");
